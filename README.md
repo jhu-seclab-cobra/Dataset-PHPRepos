@@ -26,18 +26,6 @@ This dataset is specifically curated for evaluating PHP security analysis tools 
 | 4 | Metadata Storage | Store repository information and classification results |
 | 5 | Download Web App repos | Download codes of all 141 web app type repo in the top 500 PHP repos |  
 
-### 1.4 Project Types
-
-The repositories are classified into the following main categories:
-
-| Project Type | Description | Example Projects |
-|-------------|-------------|------------------|
-| Framework | PHP frameworks and libraries | Laravel, Symfony |
-| Web App | Web applications and CMS | WordPress, Drupal |
-| Tool | Development tools and utilities | Composer, PHPUnit |
-| API | API services and implementations | API platforms |
-| Template | Website templates and themes | HTML/PHP templates |
-
 ## 2. Dataset Structure
 
 ### 2.1 Directory Organization
