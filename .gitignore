@@ -42,7 +42,6 @@ htmlcov/
 .nox/
 .coverage
 .coverage.*
-.cache
 nosetests.xml
 coverage.xml
 *.cover
@@ -169,6 +168,5 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-.cache/
 .inter/
 output/
