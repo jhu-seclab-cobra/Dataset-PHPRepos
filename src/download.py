@@ -47,13 +47,13 @@ def download_repositories(
         output_dir.mkdir(parents=True, exist_ok=True)
         
         # Create cache directory if using cache
-        cache_dir = Path('.cache/downloads')
+        inter_dir = Path('.inter/downloads')
         if use_cache:
-            cache_dir.mkdir(parents=True, exist_ok=True)
-        elif cache_dir.exists():
+            inter_dir.mkdir(parents=True, exist_ok=True)
+        elif inter_dir.exists():
             logger.operation('clean', "Clearing download cache directory")
-            shutil.rmtree(cache_dir)
-            cache_dir.mkdir(parents=True)
+            shutil.rmtree(inter_dir)
+            inter_dir.mkdir(parents=True)
         
         # Read and filter CSV entries
         filtered_entries = []
@@ -133,7 +133,7 @@ def download_repositories(
                     
                     # Check cache first if enabled
                     cache_key = f"{repo_name.replace('/', '_')}_{commit}"
-                    cache_path = cache_dir / f"{cache_key}.zip"
+                    cache_path = inter_dir / f"{cache_key}.zip"
                     
                     if use_cache and cache_path.exists():
                         logger.debug(f"Using cached download for {repo_name}")
