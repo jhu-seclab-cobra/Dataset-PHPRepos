@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This dataset is specifically curated for evaluating PHP security analysis tools on zero-day vulnerability detection. It comprises source codes of **141** GitHub repositories for PHP Web applications, classified by their project types. The repositories are selected based on their popularity (star count) and classified using both heuristic and AI-based methods.
+This dataset is specifically curated for evaluating PHP security analysis tools on zero-day vulnerability detection. It comprises source codes of **250** GitHub repositories for PHP Web applications, classified by their project types. The repositories are selected based on their popularity (star count) and classified using both heuristic and AI-based methods.
 
 ### 1.1 Dataset Purpose
 
