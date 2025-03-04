@@ -172,3 +172,4 @@ cython_debug/
 output/
 WebApps/
 webapps.tar.zst.part*
+**/.DS_Store
