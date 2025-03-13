@@ -47,13 +47,13 @@ def download_repositories(
         output_dir.mkdir(parents=True, exist_ok=True)
         
         # Create cache directory if using cache
-        cache_dir = Path('.cache/downloads')
+        inter_dir = Path('.inter/downloads')
         if use_cache:
-            cache_dir.mkdir(parents=True, exist_ok=True)
-        elif cache_dir.exists():
+            inter_dir.mkdir(parents=True, exist_ok=True)
+        elif inter_dir.exists():
             logger.operation('clean', "Clearing download cache directory")
-            shutil.rmtree(cache_dir)
-            cache_dir.mkdir(parents=True)
+            shutil.rmtree(inter_dir)
+            inter_dir.mkdir(parents=True)
         
         # Read and filter CSV entries
         filtered_entries = []
@@ -131,9 +131,10 @@ def download_repositories(
                     # Create archive URL
                     archive_url = f"https://github.com/{repo_name}/archive/{commit}.zip"
                     
-                    # Check cache first if enabled
+                    # Create cache key using accountname_reponame_commit前七位 format
+                    account_name, repo_name = repo_name.split('/')
                     cache_key = f"{repo_name.replace('/', '_')}_{commit}"
-                    cache_path = cache_dir / f"{cache_key}.zip"
+                    cache_path = inter_dir / f"{cache_key}.zip"
                     
                     if use_cache and cache_path.exists():
                         logger.debug(f"Using cached download for {repo_name}")
@@ -155,9 +156,10 @@ def download_repositories(
                         root_dir = zip_ref.namelist()[0].split('/')[0]
                         zip_ref.extractall(output_dir)
                     
-                    # Move repository to its final location
+                    # Move repository to its final location using the new naming format
+                    repo_name = f"{account_name}_{repo_name}_{commit[:7]}"
                     extracted_path = output_dir / root_dir
-                    final_path = output_dir / project_type / repo_short_name
+                    final_path = output_dir / project_type / repo_name
                     
                     # Create project type directory if it doesn't exist
                     final_path.parent.mkdir(parents=True, exist_ok=True)
@@ -173,7 +175,8 @@ def download_repositories(
                     metadata = {
                         'repo_name': repo_name,
                         'commit_hash': commit,
-                        'project_type': project_type
+                        'project_type': project_type,
+                        'account_name': account_name
                     }
                     
                     with open(final_path / '.repo_meta.json', 'w', encoding='utf-8') as f:

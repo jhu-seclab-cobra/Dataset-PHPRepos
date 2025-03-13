@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This dataset is specifically curated for evaluating PHP security analysis tools on zero-day vulnerability detection. It comprises source codes of **141** GitHub repositories for PHP Web applications, classified by their project types. The repositories are selected based on their popularity (star count) and classified using both heuristic and AI-based methods.
+This dataset is specifically curated for evaluating PHP security analysis tools on zero-day vulnerability detection. It comprises source codes of **250** GitHub repositories for PHP Web applications, classified by their project types. The repositories are selected based on their popularity (star count) and classified using both heuristic and AI-based methods.
 
 ### 1.1 Dataset Purpose
 
@@ -13,7 +13,7 @@ This dataset is specifically curated for evaluating PHP security analysis tools 
 
 - **Collection Date**: February 2025
 - **Selection Criteria**: Top starred PHP repositories on GitHub
-- **Repository Count**: 100 most popular repositories
+- **Repository Count**: 250 Web App repo filtered from 1000 most popular repositories
 - **Version Control**: Each repository is preserved at a specific commit to ensure reproducibility
 
 ### 1.3 Collection Methodology
@@ -24,7 +24,7 @@ This dataset is specifically curated for evaluating PHP security analysis tools 
 | 2 | Project Classification | Classify repositories using heuristic or AI methods |
 | 3 | Data Organization | Organize repositories by their project types |
 | 4 | Metadata Storage | Store repository information and classification results |
-| 5 | Download Web App repos | Download codes of all 141 web app type repo in the top 500 PHP repos |  
+| 5 | Download Web App repos | Download codes of all 250 web app type repo in the top 1000 PHP repos |  
 
 ## 2. Dataset Structure
 
@@ -124,7 +124,7 @@ python reproduce.py collect php 100 \
 python reproduce.py download \
     .cache/php_repos_100.csv \
     ./output \
-    --project-types "Framework,Web App"
+    --project-types "Web App"
 ```
 
 ### Important Notes

@@ -170,4 +170,7 @@ cython_debug/
 .pypirc
 .inter/
 output/
-WebApps
+REPOs/
+WebApps/
+webapps.tar.zst.part*
+**/.DS_Store
