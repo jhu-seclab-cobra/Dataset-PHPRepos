@@ -1,0 +1,27 @@
+{
+  "github_repo": "easychen/stack-roadmap",
+  "github_url": "https://github.com/easychen/stack-roadmap",
+  "commit": "9fe728c9e8a5aff6a0b658a9ad16853455200b60",
+  "project_type": "Web App",
+  "rank": 355,
+  "snapshot_origin": "https://github.com/easychen/stack-roadmap",
+  "source_package": {
+    "archive_size": 91300972,
+    "archive_sha256": "0155a5c9b8ca14258413be6e26871721f546e79f009f9c22e3de8843e9b80229",
+    "parts": [
+      {
+        "path": "source/source.tar.xz.000",
+        "size": 50331648,
+        "sha256": "37af5e13b67f2001058bd3f2c620bbb5fec137e4b4403bf5cf6cdb61dbbfa5be"
+      },
+      {
+        "path": "source/source.tar.xz.001",
+        "size": 40969324,
+        "sha256": "89b6885e84f9296747445d68d60dd1fd734f03727ef40b45407c5d69ca4f8155"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}

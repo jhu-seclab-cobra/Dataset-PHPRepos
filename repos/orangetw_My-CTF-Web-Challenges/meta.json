@@ -1,0 +1,27 @@
+{
+  "github_repo": "orangetw/My-CTF-Web-Challenges",
+  "github_url": "https://github.com/orangetw/My-CTF-Web-Challenges",
+  "commit": "325ab4e4b4888a7ca73092b8f9e4af70844a09e9",
+  "project_type": "Web App",
+  "rank": 510,
+  "snapshot_origin": "https://github.com/orangetw/My-CTF-Web-Challenges",
+  "source_package": {
+    "archive_size": 62196316,
+    "archive_sha256": "80815c36e5278aa0c917b5f470f9471b579d6f48801785c438fb4cd732af92ad",
+    "parts": [
+      {
+        "path": "source/source.tar.xz.000",
+        "size": 50331648,
+        "sha256": "ffb245556f6f8842ca599635a494128291259bee8e433301cb4b701801b42d80"
+      },
+      {
+        "path": "source/source.tar.xz.001",
+        "size": 11864668,
+        "sha256": "401dfaa86c41dd5d942d396839105ce2ac9821b205b943cdde4d2c52bc374a81"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}

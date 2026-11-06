@@ -1,0 +1,22 @@
+{
+  "github_repo": "flozz/p0wny-shell",
+  "github_url": "https://github.com/flozz/p0wny-shell",
+  "commit": "788b3d2b3d369a42e82b04686ed4054da74d37bf",
+  "project_type": "Web App",
+  "rank": 630,
+  "snapshot_origin": "https://github.com/flozz/p0wny-shell",
+  "source_package": {
+    "archive_size": 53748,
+    "archive_sha256": "0c94cf09b52256f9ab83a8b3dcf742657c9c5e7abb7c0c1b6a5373c622b91e47",
+    "parts": [
+      {
+        "path": "source/source.tar.xz",
+        "size": 53748,
+        "sha256": "0c94cf09b52256f9ab83a8b3dcf742657c9c5e7abb7c0c1b6a5373c622b91e47"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}

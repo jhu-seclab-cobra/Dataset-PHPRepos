@@ -1,0 +1,22 @@
+{
+  "github_repo": "sabre-io/Baikal",
+  "github_url": "https://github.com/sabre-io/Baikal",
+  "commit": "38b1a5d30a1b2cb02f4f0b3838f6d14fe751f56b",
+  "project_type": "Web App",
+  "rank": 533,
+  "snapshot_origin": "https://github.com/sabre-io/Baikal",
+  "source_package": {
+    "archive_size": 528268,
+    "archive_sha256": "a1511d6b16425959f8604ef6878a59f4c0948c1af7f5162abe136d526120491a",
+    "parts": [
+      {
+        "path": "source/source.tar.xz",
+        "size": 528268,
+        "sha256": "a1511d6b16425959f8604ef6878a59f4c0948c1af7f5162abe136d526120491a"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}

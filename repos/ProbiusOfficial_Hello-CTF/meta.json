@@ -1,0 +1,27 @@
+{
+  "github_repo": "ProbiusOfficial/Hello-CTF",
+  "github_url": "https://github.com/ProbiusOfficial/Hello-CTF",
+  "commit": "ca0e92c4ab85b57bd6d012c1cc2388d4b3e60bd4",
+  "project_type": "Web App",
+  "rank": 575,
+  "snapshot_origin": "https://github.com/ProbiusOfficial/Hello-CTF",
+  "source_package": {
+    "archive_size": 52936680,
+    "archive_sha256": "77f39c778bfcf57de32f454071d517b1942acf5473ed305c2b8f82a0afdc373d",
+    "parts": [
+      {
+        "path": "source/source.tar.xz.000",
+        "size": 50331648,
+        "sha256": "9be89f7b36fee98c4f30be3c714b581300651e1a3080055eb655b665b04d4ffb"
+      },
+      {
+        "path": "source/source.tar.xz.001",
+        "size": 2605032,
+        "sha256": "44804cdb34e161978dc1d008bda547dafec95787969e04f2922655398a34b57e"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}
