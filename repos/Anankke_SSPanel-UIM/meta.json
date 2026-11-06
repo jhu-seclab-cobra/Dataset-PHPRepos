@@ -1,0 +1,22 @@
+{
+  "github_repo": "Anankke/SSPanel-UIM",
+  "github_url": "https://github.com/Anankke/SSPanel-UIM",
+  "commit": "f18d5d4841d31301c9c862998028280846d6c3b1",
+  "project_type": "Web App",
+  "rank": 84,
+  "snapshot_origin": "https://github.com/Anankke/SSPanel-UIM",
+  "source_package": {
+    "archive_size": 2211124,
+    "archive_sha256": "037fb10e1324e4a1d946c5594d63d96a252a88cc2be739c1d4798e2f55cc7e6e",
+    "parts": [
+      {
+        "path": "source/source.tar.xz",
+        "size": 2211124,
+        "sha256": "037fb10e1324e4a1d946c5594d63d96a252a88cc2be739c1d4798e2f55cc7e6e"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}

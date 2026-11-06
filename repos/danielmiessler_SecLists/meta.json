@@ -1,0 +1,77 @@
+{
+  "github_repo": "danielmiessler/SecLists",
+  "github_url": "https://github.com/danielmiessler/SecLists",
+  "commit": "060384ad4e4c74495109e358103aa4499fdf1291",
+  "project_type": "Web App",
+  "rank": 1,
+  "snapshot_origin": "https://github.com/danielmiessler/SecLists",
+  "source_package": {
+    "archive_size": 569061056,
+    "archive_sha256": "6941552f6d668bc60a214fcddd659e7f093c3e57a0765d3831a9677e2e087cda",
+    "parts": [
+      {
+        "path": "source/source.tar.xz.000",
+        "size": 50331648,
+        "sha256": "022c56c7314c78fe4de3b88109cbd925e095ec3ed5db49eabd151ec484a57fd2"
+      },
+      {
+        "path": "source/source.tar.xz.001",
+        "size": 50331648,
+        "sha256": "6005770c4b1eb6dea79751d9979d430b2ad6b2fa6c297fae7b53dd382a692ae7"
+      },
+      {
+        "path": "source/source.tar.xz.002",
+        "size": 50331648,
+        "sha256": "ef9472d28c45ded369c4c707a353e78f2ee8bb8f309f393a2dd6617dfbe56d68"
+      },
+      {
+        "path": "source/source.tar.xz.003",
+        "size": 50331648,
+        "sha256": "ea01dcb6ac1e94d06344833d754b4c2fa01b69d8199f1b271729bec4d260c3b1"
+      },
+      {
+        "path": "source/source.tar.xz.004",
+        "size": 50331648,
+        "sha256": "73c6471da04919d2d4e2e84d361663767a1f201e6fd4261069731741050ae64c"
+      },
+      {
+        "path": "source/source.tar.xz.005",
+        "size": 50331648,
+        "sha256": "e153e1337c14a2757a50b60fc201767b5871d14f3bae9b1d7345870e3015ec28"
+      },
+      {
+        "path": "source/source.tar.xz.006",
+        "size": 50331648,
+        "sha256": "cb7b2f9cf990751294929ca86b7f25a74bc6b78ea1ccfd017a670510c3b17344"
+      },
+      {
+        "path": "source/source.tar.xz.007",
+        "size": 50331648,
+        "sha256": "3c20e4d0360569a017949801b6169a72e00abca116da9e5096617d1b322a5a8c"
+      },
+      {
+        "path": "source/source.tar.xz.008",
+        "size": 50331648,
+        "sha256": "2ff010316d2e141ea8c13f5bb8e407d8a77adf35df5a4a362c1e397b4377642d"
+      },
+      {
+        "path": "source/source.tar.xz.009",
+        "size": 50331648,
+        "sha256": "bfc82285ff628a7f928883705fadd4b7d9c128aacefa4b2f1184e8d728260259"
+      },
+      {
+        "path": "source/source.tar.xz.010",
+        "size": 50331648,
+        "sha256": "fccd6554024fa213a9cda499f9622c070f4b3bd62f397f26ea010781f2ed656e"
+      },
+      {
+        "path": "source/source.tar.xz.011",
+        "size": 15412928,
+        "sha256": "5a72c18510fa0919287d071a44d1fd68ba3187cea6e92f25de623d51ca2c993a"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}
