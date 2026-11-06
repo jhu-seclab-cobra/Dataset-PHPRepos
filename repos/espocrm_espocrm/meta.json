@@ -1,0 +1,22 @@
+{
+  "github_repo": "espocrm/espocrm",
+  "github_url": "https://github.com/espocrm/espocrm",
+  "commit": "a3e7f5c5fa725fd087f2916b294e262cb033085e",
+  "project_type": "Web App",
+  "rank": 702,
+  "snapshot_origin": "https://github.com/espocrm/espocrm",
+  "source_package": {
+    "archive_size": 6521136,
+    "archive_sha256": "9adb48d3cadc9a477ac23fae52d9e9fd9908e897b8dbe45f5e89a7bf573ebc39",
+    "parts": [
+      {
+        "path": "source/source.tar.xz",
+        "size": 6521136,
+        "sha256": "9adb48d3cadc9a477ac23fae52d9e9fd9908e897b8dbe45f5e89a7bf573ebc39"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}

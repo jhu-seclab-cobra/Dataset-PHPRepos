@@ -1,0 +1,22 @@
+{
+  "github_repo": "lincanbin/Carbon-Forum",
+  "github_url": "https://github.com/lincanbin/Carbon-Forum",
+  "commit": "55d98f4e4a8c3442c61bfe0a5844c32f22145cd9",
+  "project_type": "Web App",
+  "rank": 779,
+  "snapshot_origin": "https://github.com/lincanbin/Carbon-Forum",
+  "source_package": {
+    "archive_size": 6699876,
+    "archive_sha256": "04d0c5de6c835e45cfec541aacf88036508148a10c17c81faf97a702f8f50974",
+    "parts": [
+      {
+        "path": "source/source.tar.xz",
+        "size": 6699876,
+        "sha256": "04d0c5de6c835e45cfec541aacf88036508148a10c17c81faf97a702f8f50974"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}

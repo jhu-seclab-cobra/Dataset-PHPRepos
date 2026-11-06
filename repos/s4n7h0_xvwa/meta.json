@@ -1,0 +1,22 @@
+{
+  "github_repo": "s4n7h0/xvwa",
+  "github_url": "https://github.com/s4n7h0/xvwa",
+  "commit": "fb30fa517d288e618b521d252f61107ef6a24797",
+  "project_type": "Web App",
+  "rank": 847,
+  "snapshot_origin": "https://github.com/s4n7h0/xvwa",
+  "source_package": {
+    "archive_size": 1950776,
+    "archive_sha256": "ee3372a7fe6bca260ef13ccc61e96b580fda3605d93bce2c4e85c26376d5478f",
+    "parts": [
+      {
+        "path": "source/source.tar.xz",
+        "size": 1950776,
+        "sha256": "ee3372a7fe6bca260ef13ccc61e96b580fda3605d93bce2c4e85c26376d5478f"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <github_url> \"$commit\" (when meta.json.snapshot_origin is a swh:1:rev: id, fetch the commit instead from the Software Heritage vault git-bare bundle of that id). export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}
