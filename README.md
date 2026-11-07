@@ -1,138 +1,96 @@
-# Dataset PHPRepos
+# PHPRepos
 
-## 1. Overview
+> PHP + Repos: the web applications among the 1000 most-starred PHP repositories on GitHub.
 
-This dataset is specifically curated for evaluating PHP security analysis tools on zero-day vulnerability detection. It comprises source codes of **250** GitHub repositories for PHP Web applications, classified by their project types. The repositories are selected based on their popularity (star count) and classified using both heuristic and AI-based methods.
+250 popular PHP web applications on GitHub, each with the source code of a fixed commit.
 
-### 1.1 Dataset Purpose
+## Install
 
-- **Security Tool Evaluation**: The dataset is designed to assess the effectiveness of PHP security analysis tools in detecting potential zero-day vulnerabilities.
-- **Real-world Applications**: By including popular PHP repositories, it provides realistic test cases that reflect actual development practices.
-
-### 1.2 Collection Information
-
-- **Collection Date**: February 2025
-- **Selection Criteria**: Top starred PHP repositories on GitHub
-- **Repository Count**: 250 Web App repo filtered from 1000 most popular repositories
-- **Version Control**: Each repository is preserved at a specific commit to ensure reproducibility
-
-### 1.3 Collection Methodology
-
-| Step | Process | Description |
-|------|---------|-------------|
-| 1 | Repository Selection | Fetch top 500 starred PHP repositories from GitHub |
-| 2 | Project Classification | Classify repositories using heuristic or AI methods |
-| 3 | Data Organization | Organize repositories by their project types |
-| 4 | Metadata Storage | Store repository information and classification results |
-| 5 | Download Web App repos | Download codes of all 250 web app type repo in the top 1000 PHP repos |  
-
-## 2. Dataset Structure
-
-### 2.1 Directory Organization
-
-```
-output/
-├── Framework/
-│   ├── laravel/
-│   │   └── .repo_meta.json
-│   └── symfony/
-│       └── .repo_meta.json
-├── Web App/
-│   ├── wordpress/
-│   │   └── .repo_meta.json
-│   └── drupal/
-│       └── .repo_meta.json
-└── Tool/
-    └── composer/
-        └── .repo_meta.json
+```bash
+git clone https://github.com/jhu-seclab-cobra/Dataset-PHPRepos.git
 ```
 
-### 2.2 Metadata Format
+The clone is about 3.5 GB: the compressed source archives of all 250 datapoints.
 
-Each repository contains a `.repo_meta.json` file with the following information:
+## Usage
+
+Extract the source code of the datapoints you need (Python 3.12 or later, no third-party packages):
+
+```bash
+python tools/extract.py                                 # every repository
+python tools/extract.py --top 50                        # the 50 most-starred
+python tools/extract.py pterodactyl_panel humhub_humhub # named repositories
+```
+
+Each archive is checked against the sha256 values in its `meta.json` and extracted to `repos/<owner>_<repo>/codes/`, which Git ignores. An existing `codes/` is kept unless `--force` is given.
+
+## Dataset
+
+250 repositories classified as `Web App` among the 1000 PHP repositories with the most GitHub stars in March 2025, each at the head commit of its default branch at that time. Their star ranks run from 1 to 1000.
+
+How the repositories were selected: [docs/collection.md](docs/collection.md).
+
+## Format
+
+```
+repos.csv                                  one row per datapoint, in rank order
+repos/<owner>_<repo>/meta.json             datapoint metadata
+repos/<owner>_<repo>/source/source.tar.xz  source archive (cut into source.tar.xz.000, .001, ... above 48 MiB)
+repos/<owner>_<repo>/codes/                extracted source (created by tools/extract.py)
+```
+
+`repos.csv` columns: `github_repo`, `commit`, `project_type`, `rank`.
+
+`meta.json` fields:
+
+| Field | Meaning |
+|---|---|
+| `github_repo`, `github_url` | Repository |
+| `commit` | Head commit of the default branch at collection time; the archive holds its tree |
+| `project_type` | Repository type (`Web App` for every datapoint) |
+| `rank` | Position among the 1000 most-starred PHP repositories, 1 being the most starred |
+| `snapshot_origin` | Where the commit was fetched from: `github_url`, or a fork holding the same commit when the repository is no longer on GitHub |
+| `source_package` | Archive size and sha256, each part's path, size and sha256, and the command, Git and xz versions that produced the archive |
+
 ```json
 {
-    "repo_name": "owner/repository",
-    "commit_hash": "commit_identifier",
-    "project_type": "Framework"
+  "github_repo": "pterodactyl/panel",
+  "github_url": "https://github.com/pterodactyl/panel",
+  "commit": "871ef0c56412b71ca43602759ee0caff68e32fdf",
+  "project_type": "Web App",
+  "rank": 148,
+  "snapshot_origin": "https://github.com/pterodactyl/panel",
+  "source_package": {
+    "archive_size": 1705728,
+    "archive_sha256": "4e2118263b9fbb1f8e3806f16f6f09507eca4f48f5ae658072640b1763df5525",
+    "parts": [
+      {
+        "path": "source/source.tar.xz",
+        "size": 1705728,
+        "sha256": "4e2118263b9fbb1f8e3806f16f6f09507eca4f48f5ae658072640b1763df5525"
+      }
+    ],
+    "generation_command": "...",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
 }
 ```
 
-## 3. Download
+## Citation
 
-### OPTION-1: Download Pre-collected Dataset
-
-You can find the pre-collected dataset in the [releases page](https://github.com/YichaoXu/Dataset-PHPRepos/releases).
-
-### OPTION-2: Download Using Python Script
-
-1. Install dependencies:
-```bash
-pip install -r requirements.txt
+```bibtex
+@inproceedings{xu_cobra_2026,
+  title = {{CoBrA}: Context-, Branch-sensitive Static Analysis for Detecting Taint-style Vulnerabilities in {PHP} Web Applications},
+  author = {Xu, Yichao and Kang, Mingqing and Thimmaiah, Neil and Gjomemo, Rigel and Venkatakrishnan, V. N. and Cao, Yinzhi},
+  booktitle = {Proceedings of the IEEE/ACM 48th International Conference on Software Engineering (ICSE)},
+  publisher = {ACM},
+  pages = {1943--1954},
+  year = {2026},
+  doi = {10.1145/3744916.3773195}
+}
 ```
 
-2. Download repositories:
-```bash
-python reproduce.py download \
-    .cache/php_repos_500.csv \
-    ./REPOs \
-    --project-types "Web App"
-```
+## License
 
-Parameters:
-- `php_repos_500.csv`: Input file containing repository data
-- `./REPOs`: Output directory for downloaded repositories
-- `--project-types`: Filter by project types (optional)
-
-The repositories will be organized by project type in the output directory.
-
-## 4. Update Dataset Collection
-
-If you want to update the dataset with the latest repositories, you can use the collect command:
-
-1. Collect new repository data:
-```bash
-python reproduce.py collect php 100 \
-    --output-dir .cache \
-    --github-token YOUR_GITHUB_TOKEN \
-    --ai-classifier "api_url:model_name:api_key" \
-    --verbose
-```
-
-Parameters:
-- `php`: Target programming language
-- `100`: Number of top repositories to collect
-- `--output-dir`: Directory to store the collected data
-- `--github-token`: GitHub API token for higher rate limits (recommended)
-- `--ai-classifier`: AI service configuration for better classification (If none, use keywords based statistic algorithm)
-- `--verbose`: Show detailed progress information
-
-The command will:
-1. Fetch the top 100 PHP repositories from GitHub
-2. Classify each repository using AI (if configured) or heuristic methods
-3. Save the results to `.cache/php_repos_100.csv`
-4. This CSV file can then be used with the download command
-
-Example workflow to update and download:
-```bash
-# 1. Collect new repository data
-python reproduce.py collect php 100 \
-    --output-dir .cache \
-    --github-token YOUR_GITHUB_TOKEN
-
-# 2. Download the updated repositories
-python reproduce.py download \
-    .cache/php_repos_100.csv \
-    ./output \
-    --project-types "Web App"
-```
-
-### Important Notes
-- Repository availability depends on GitHub's accessibility
-- Some repositories might be renamed or removed after collection
-- For consistency, we recommend using the pre-collected dataset from releases
-- The download process respects GitHub's rate limits
-
-## Contact
-
-For questions or issues, please contact the project maintainer.
+[GPL-2.0](LICENSE). The archived source code keeps the license of its own repository.
