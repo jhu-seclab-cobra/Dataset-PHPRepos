@@ -1,0 +1,22 @@
+{
+  "github_repo": "swagkarna/Rafel-Rat",
+  "github_url": "https://github.com/swagkarna/Rafel-Rat",
+  "commit": "e1d8c338209382c0ec9e5971a7d3291458e283da",
+  "project_type": "Web App",
+  "rank": 894,
+  "snapshot_origin": "https://github.com/tech-samarth/Rafel-Rat",
+  "source_package": {
+    "archive_size": 13054032,
+    "archive_sha256": "0e5f927f9251e78cf08a56680d919c0431caddec58ed707eee8a7393a1bf7c55",
+    "parts": [
+      {
+        "path": "source/source.tar.xz",
+        "size": 13054032,
+        "sha256": "0e5f927f9251e78cf08a56680d919c0431caddec58ed707eee8a7393a1bf7c55"
+      }
+    ],
+    "generation_command": "# Bash. $commit is meta.json.commit. $repository is a fresh bare repository holding it: git init --bare \"$repository\"; git --git-dir=\"$repository\" fetch --depth 1 <meta.json.snapshot_origin> \"$commit\". export-subst placeholders such as %d expand from this repository's state.\n(\n  set -o pipefail\n  for name in \"${!GIT_@}\"; do unset \"$name\"; done\n  export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_ATTR_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1 GIT_TERMINAL_PROMPT=0 LC_ALL=C XZ_DEFAULTS= XZ_OPT=\n  git --git-dir=\"$repository\" -c core.ignorecase=false archive --format=tar \"$commit\" | xz -T1 -6 > source.tar.xz\n  # archives above 50331648 bytes are cut into source.tar.xz.000, .001, ...\n  # split -b 50331648 -d -a 3 source.tar.xz source.tar.xz.\n)",
+    "git_version": "git version 2.50.1 (Apple Git-155)",
+    "xz_version": "xz (XZ Utils) 5.8.4"
+  }
+}
