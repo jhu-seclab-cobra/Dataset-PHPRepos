@@ -7,10 +7,11 @@
 ## Install
 
 ```bash
-git clone --depth 1 https://github.com/jhu-seclab-cobra/Dataset-PHPRepos.git
+curl -L https://github.com/jhu-seclab-cobra/Dataset-PHPRepos/archive/refs/heads/main.tar.gz | tar -xz
+cd Dataset-PHPRepos-main
 ```
 
-The clone is about 3.5 GB: the compressed source archives of all 250 datapoints. To download only the datapoints you need, clone without file contents and check out those directories; `repos.csv` lists every datapoint:
+This downloads about 3.5 GB, the compressed source archives of all 250 datapoints, without Git history. To download only the datapoints you need, clone without file contents and check out those directories; `repos.csv` lists every datapoint:
 
 ```bash
 git clone --depth 1 --filter=blob:none --sparse https://github.com/jhu-seclab-cobra/Dataset-PHPRepos.git
