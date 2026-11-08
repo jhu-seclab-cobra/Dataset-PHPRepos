@@ -7,10 +7,18 @@
 ## Install
 
 ```bash
-git clone https://github.com/jhu-seclab-cobra/Dataset-PHPRepos.git
+git clone --depth 1 https://github.com/jhu-seclab-cobra/Dataset-PHPRepos.git
 ```
 
-The clone is about 3.5 GB: the compressed source archives of all 250 datapoints.
+The clone is about 3.5 GB: the compressed source archives of all 250 datapoints. To download only the datapoints you need, clone without file contents and check out those directories; `repos.csv` lists every datapoint:
+
+```bash
+git clone --depth 1 --filter=blob:none --sparse https://github.com/jhu-seclab-cobra/Dataset-PHPRepos.git
+cd Dataset-PHPRepos
+git sparse-checkout set tools repos/pterodactyl_panel repos/humhub_humhub
+```
+
+`tools/extract.py` then sees only the checked-out datapoints.
 
 ## Usage
 
